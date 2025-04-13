@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { User, LayoutGrid, KeyRound } from 'lucide-react';
+import { BookText, House, Users, User, LayoutGrid, KeyRound } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const userNav: NavItem[] = [
@@ -25,7 +25,21 @@ const adminNav: NavItem[] = [
         title: 'User',
         href: '/dashboard/user',
         icon: User,
-        
+    },
+    {
+        title: 'Student',
+        href: '/dashboard/student',
+        icon: Users,
+    },
+    {
+        title: 'Lecturer',
+        href: '/dashboard/lecturer',
+        icon: House,
+    },
+    {
+        title: 'Research Proposal',
+        href: '/dashboard/research-proposal',
+        icon: BookText,
     },
 ];
 

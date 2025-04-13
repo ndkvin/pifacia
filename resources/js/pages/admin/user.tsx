@@ -436,30 +436,30 @@ export default function Users({ users, roles }: { users: User[], roles: any[] })
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                                    <Label htmlFor="create-email" className="text-right">
-                                        Role
-                                    </Label>
-                                    <Select value={editValues.role_id} onValueChange={(value) =>
-                                        setEditValues((prev) => ({
-                                            ...prev,
-                                            role_id: value,
-                                        }))
-                                    }>
-                                        <SelectTrigger className="w-70">
-                                            <SelectValue placeholder="Select a role" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectGroup>
-                                                <SelectLabel>Role</SelectLabel>
-                                                {roles.map((role) => (
-                                                    <SelectItem key={role.id} value={role.id}>
-                                                        {role.name}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectGroup>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
+                                <Label htmlFor="create-email" className="text-right">
+                                    Role
+                                </Label>
+                                <Select value={editValues.role_id} onValueChange={(value) =>
+                                    setEditValues((prev) => ({
+                                        ...prev,
+                                        role_id: value,
+                                    }))
+                                }>
+                                    <SelectTrigger className="w-70">
+                                        <SelectValue placeholder="Select a role" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>Role</SelectLabel>
+                                            {roles.map((role) => (
+                                                <SelectItem key={role.id} value={role.id}>
+                                                    {role.name}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
                         </div>
                         <DialogFooter>
                             <Button variant="outline" onClick={() => setEditDialogOpen(false)}>

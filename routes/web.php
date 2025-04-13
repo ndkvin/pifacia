@@ -24,6 +24,7 @@ Route::group([
     'middleware' => ['auth', \App\Http\Middleware\IsAdmin::class],
 ], function() {
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
+    Route::resource('student', \App\Http\Controllers\Admin\StudentController::class);
 });
 
 require __DIR__.'/settings.php';
