@@ -25,6 +25,7 @@ Route::group([
 ], function() {
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('student', \App\Http\Controllers\Admin\StudentController::class);
+    Route::resource('lecturer', \App\Http\Controllers\Admin\LecturerController::class);
 });
 
 require __DIR__.'/settings.php';
