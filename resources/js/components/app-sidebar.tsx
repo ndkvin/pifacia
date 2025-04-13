@@ -32,7 +32,6 @@ const adminNav: NavItem[] = [
 export function AppSidebar() {
     const auth: any = usePage().props.auth;
 
-
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>
@@ -49,8 +48,8 @@ export function AppSidebar() {
 
             <SidebarContent>
                 <NavMain items={userNav} role={'All User'} />
-                {auth.user.role === 'Administrator' && (
-                    <NavMain items={adminNav} role={'administrator'} />
+                {auth.user.role_id === 1 && (
+                    <NavMain items={adminNav} role={'Administrator'} />
                 )}
             </SidebarContent>
             

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Role;
+use Illuminate\Validation\ValidationException;
 
 class RoleController extends Controller
 {
@@ -64,7 +65,16 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:roles,name,'. $id,
+        ]);
+
+        $role = Role::findOrFail($id);
+
+        $role->update([
+            'name' => $request->name,
+        ]);
+        return redirect()->route('dashboard.role.index')->with('success', 'Role updated successfully.');
     }
 
     /**
@@ -72,6 +82,16 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $role = Role::findOrFail($id);
+
+        // Check if the role is being used by any user
+        if ($role->users()->count() > 0) {
+            throw ValidationException::withMessages([
+                'role' => ['Role tidak dapat dihapus karena masih digunakan oleh user.']
+            ]);
+        }
+        $role->delete();
+
+        return redirect()->route('dashboard.role.index')->with('success', 'Role deleted successfully.');
     }
 }
