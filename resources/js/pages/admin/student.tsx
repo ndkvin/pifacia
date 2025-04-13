@@ -174,6 +174,7 @@ export function getColumns(
                         <Button variant="destructive" onClick={() => handleDelete(student)}>
                             Delete
                         </Button>
+
                     </div>
                 );
             },
@@ -244,7 +245,7 @@ export default function Dashboard({ students }: any) {
             nim: profileData.nim, // Extract nim from decoded profile_data
             name_fakultas: profileData.fakultas, // Extract fakultas from decoded profile_data
             jurusan: profileData.name_jurusan,
-            is_active:  student.is_active// Extract jurusan from decoded profile_data
+            is_active: student.is_active// Extract jurusan from decoded profile_data
         });
         setEditDialogOpen(true);
     };
@@ -300,6 +301,17 @@ export default function Dashboard({ students }: any) {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
             <div className="mx-10 mt-4">
+                <div className="mt-4">
+                    <a
+                        href="/dashboard/export-students"
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                    >
+                        <Button variant="outline">
+                            Export
+                        </Button>
+                    </a>
+                </div>
                 <DataTable columns={columns} data={students}>
                     {/* Create Student Dialog */}
                     <Dialog open={createDialogOpen} onOpenChange={setCreateDialogOpen}>
@@ -494,7 +506,7 @@ export default function Dashboard({ students }: any) {
                                         onChange={(e) => setEditValues({ ...editValues, name_fakultas: e.target.value })}
                                     />
                                 </div>
-                                
+
                                 <div className="grid grid-cols-4 items-center gap-4">
                                     <Label htmlFor="edit-jurusan" className="text-right">
                                         Jurusan

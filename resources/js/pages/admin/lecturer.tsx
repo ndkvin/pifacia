@@ -285,6 +285,17 @@ export default function Dashboard({ lectures = [] }: DashboardProps) {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
             <div className="mx-10 mt-4">
+                <div className="mt-4">
+                    <a
+                        href="/dashboard/export-lecturer"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Button variant="outline">
+                            Export
+                        </Button>
+                    </a>
+                </div>
                 <DataTable columns={columns} data={lectures}>
                     {/* Create Lecture Dialog */}
                     <Dialog open={createDialogOpen} onOpenChange={setCreateDialogOpen}>
@@ -505,6 +516,6 @@ export default function Dashboard({ lectures = [] }: DashboardProps) {
                     </Dialog>
                 </DataTable>
             </div>
-        </AppLayout>
+        </AppLayout >
     );
 }
