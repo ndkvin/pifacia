@@ -18,5 +18,13 @@ Route::group([
     Route::resource('role', \App\Http\Controllers\User\RoleController::class);
 });
 
+Route::group([
+    'prefix' => 'dashboard',
+    'as' => 'dashboard.',
+    'middleware' => ['auth', \App\Http\Middleware\IsAdmin::class],
+], function() {
+    Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
+});
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
